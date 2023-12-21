@@ -1,0 +1,109 @@
+---
+title: "Reassessing the Impact of Public-Private Partnerships on Political Career Advancement in China"
+author: "Shuyi Bian"
+format:
+  cmc-article-pdf:
+    fontsize: 12pt
+    margin-left: 1.5in
+    margin-right: 1.5in
+    margin-bottom: 1.2in
+    margin-top: 1.2in
+    keep-tex: true
+    fig-pos: 'tbp'
+    tbl-pos: 'tbp'
+    include-in-header: header.tex
+bibliography: bibliography.bib
+abstract: | 
+  This study interrogates the relationship between Public-Private Partnership (PPP) investments and mayoral promotions in China, diverging from Lei and Zhou's assertion of economic performance influencing political advancement. Employing difference-in-differences and fixed effects models, the research disaggregates PPP investments by type and assesses their impact on the promotion of municipal leaders over a three-year term. The findings reveal no significant effect of PPP investments on mayoral promotions, with a subtle negative trend for transportation PPPs, challenging the notion that these investments serve as a fast track for political ascent. The results suggest a more complex interplay between infrastructure investment and political incentives than previously understood, with potential misalignments between long-term project benefits and short-term political evaluation metrics. This study prompts a reconsideration of the temporal and evaluative frameworks used to gauge the political dividends of economic initiatives, advocating for a broader, more longitudinal perspective in future research.
+---
+
+# Introduction
+Government plays a crucial role in delivering public goods, with essential projects like schools, dams, and roads requiring substantial long-term investment to yield their full benefits. A key issue arises from the short tenure of local political leaders, which often results in a lack of incentive to commit to these long-term investments, despite their eventual benefit to the public. This mismatch between the short-term focus of political leaders and the long-term public interest frequently leads to inadequate investment in vital public infrastructure.[@lei2022private]
+
+However, the situation in China presents a notable contrast. Here, officials display a strong commitment to large-scale, long-term public projects. This distinctive approach is largely driven by the incentive structures and career advancement motivations within the Chinese governance system. Central to this is the performance evaluation system of the central government, which creates a competitive environment akin to a 'promotion tournament' among officials.[@WANG2021106888] In this system, an official’s chances of promotion are heavily influenced by their economic performance while in office, compared not in absolute terms but relative to their peers. As a result, officials who perform well in this competitive setting are more likely to advance in their careers.[@li2005political]
+
+This framework is particularly relevant in understanding China's economic boom over the past thirty years, which has been significantly shaped by the central government's focus on GDP growth as a primary metric. Local officials, under pressure to climb the political hierarchy, often utilize all the resources at their disposal to stimulate economic growth in their jurisdictions. This has made economic expansion a key driver of local government initiatives, particularly in ambitious, long-term public infrastructure projects like subway systems. Such projects require significant ongoing investment and have a substantial impact on local GDP, aligning with the career goals of local officials in a GDP-centric system. This complex relationship between infrastructure investment and political career progression in China is thoroughly examined in the study "Private Returns to Public Investment: Political Career Incentives and Infrastructure Investment in China" by Zhenhuan Lei and Junlong Aaron Zhou, offering detailed insights into this intriguing dynamic.
+
+However, the velocity of China’s economic expansion has often outpaced the capacity of government investment, precipitating a significant fiscal dilemma characterized by mounting government debt and the vast infrastructural requisites of rapid urbanization. This confluence of rapid development and financial limitations has engendered a considerable void in the realm of long-term infrastructural planning and execution. In response, the Chinese government has robustly endorsed the model of Public-Private Partnerships (PPPs) as a viable countermeasure to these economic constraints. Since their initial adoption in the 1980s, exemplified by the Build–Operate–Transfer (BOT) model, PPP have reflected China’s strategic pivot to reconcile the imperatives of urban development with sustainable fiscal management.[@li2023public] These partnerships have become a linchpin in the financing of diverse infrastructure projects, crucially facilitating the country's extensive urbanization process. This PPP-driven approach has proven essential in enabling the development of critical infrastructure, encompassing transport and environmental sustainability, amidst the nation's transformative journey toward urban modernity.
+
+In this study, I extend the discourse initiated by Lei and Zhou by examining the effects of Public-Private Partnership (PPP) investments on the promotion odds of municipal leaders within a three-year tenure. Diverging from Lei and Zhou’s conclusions, my analysis segregates PPP investments into comprehensive categories—'All PPP Project', 'Transportation PPP Project', and 'Environmental and Water Conservancy PPP Project'—and scrutinizes their influence through the prisms of difference-in-differences (DiD) and fixed effects (FE) models. Contrary to the hypothesized economic impact-driven promotions postulated by Lei and Zhou, the results from the DiD models reveal no statistically significant impact of PPP investments on mayoral promotions, suggesting that the anticipated economic spillovers may not be as directly correlated with political progression as previously thought.
+
+Moreover, the FE models, which provide a lens adjusted for city-specific unobserved variables, support the non-significant findings for 'All PPP Project' and 'Environmental and Water conservancy PPP Project' investments. Notably, the 'Transportation PPP Project' investments demonstrate a minor negative influence on mayoral promotion, alluding to a potential disconnect between the extended timelines required for transportation projects to bear fruit and the immediate metrics used for political ascension. This unexpected negative sign raises questions about the valuation of investment types by provincial adjudicators within the temporal bounds of mayoral evaluations. These findings, when juxtaposed against Lei and Zhou’s work, suggest a more intricate and less direct relationship between PPP investment types and their political rewards. It appears that the three-year window may not capture the full economic ramifications of such investments, prompting a need for further exploration into the longitudinal impacts and a broader understanding of the incentives at play in provincial officials' assessments of mayoral efficacy.
+
+# Data & Analysis
+
+In Zhenhuan Lei and Junlong Aaron Zhou's study on subway approvals in Chinese cities, they employed a comprehensive data collection methodology utilizing various sources. The initial data set, focusing on subway approvals, was primarily sourced from the annual reports of the China Association of Metros, identifying cities with existing or under-construction subway systems as of 2017. 
+
+In their study, Lei and Zhou meticulously analyzed the career dynamics of city mayors in China, drawing on the CCER Official Dataset and the Chinese Political Elite Database. These resources provided insights into the mayors' promotions, political connections, and career histories. Additionally, they utilized the China City Statistical Yearbook and the China Urban Construction Statistical Yearbook for city-level socio-economic and infrastructural data. Focusing on 265 prefecture-level cities from 2003 to 2016, while excluding megacities for consistency, they formed a comprehensive city-year panel data set.
+
+|                         |
+|:------------------------|
+| ![](figures/SummaryTable1.jpg) |{#fig-tendist width="100%"}
+
+: Replication of @lei2022private Summary Statistics Table {#tbl-main}
+
+
+Table 1 is the summary table which reveals insightful trends: a 41% average promotion rate for mayors over three years suggests a dynamic environment for career advancement, with political connections appearing less influential than expected. The data also highlights the mayors' average age of 50, pointing to a preference for experienced leadership. Additionally, the diversity in city populations, GDP, and infrastructure investments underscores the varying economic landscapes of these cities. Particularly notable is the rarity of subway approvals, with an average of only 0.04 mayors achieving this feat, illustrating the uniqueness and potential significance of such accomplishments in the context of urban development and political careers.
+
+To assess the influence of subway approvals on mayoral promotions in China, Lei and Zhou utilize a generalized difference-in-differences (DID) approach as their baseline identification strategy. 
+
+$$Promotion_{it} = \beta_0 + \beta_1 Approval_{it} + \gamma X_{it-1} + \theta_i + \pi_t + \varepsilon_{it}$$
+
+In the DiD model, the dependent variable, Promotion_{it}, signifies whether a mayor advances to higher political office within three years. The key explanatory variable, Approval_{it}, denotes subway project approval, with mayors identified during the pivotal approval-seeking phase. Lei and Zhou control the city-specific trends and annual effects to isolate the impact and they focusing on the positive relationship indicated by coefficient $\beta_1$, which suggests that subway approvals are significantly associated with increased chances of promotion.
+
+Moreover, to test “parallel trends assumption” and demonstrate the dynamic effect of subway approval on a mayor’s promotion. They use a new model to analyze approvals across different years, with Promotion_{it} reflecting the promotion outcome.
+
+$$Promotion_{it} = \sum_{\substack{\gamma=-4 \\ \gamma \neq +1}}^{+5} \beta_{\gamma} Approval_{i(t+\gamma)} + \omega X_{it-1} + \theta_i + \pi_t + \varepsilon_{it}.$$
+The analysis hinges on the condition that approval impact coefficients ($\beta_\gamma$) for non-base years should not differ significantly from zero, ensuring the validity of the DID approach.
+
+
+![Dynamic effects of subway approvals on mayor promotion. Each circle indicates a point estimate for the effect of subway approval, and vertical bars are the 90% and 95% confidence intervals. Negative num- bers on the horizontal axis refer to the years before a city receives subway approval; positive numbers indicate the years since the city receives subway approval. We omit the year before the city obtains subway approval as a baseline. All coefficients should be inter- preted in comparison with this baseline year.@lei2022private](figures/Lead_Lag_Figure1.jpg){#fig-example width="80%"}
+
+Figure 1 delineates the dynamic effects of subway approvals, where the period prior to approval serves as a baseline, exhibiting no significant impact on mayoral promotion prospects. This baseline adherence fortifies the assumption that, absent the approval, promotion trends would remain unchanged. The figure then reveals a marked positive shift in the likelihood of promotion post-approval, affirming that the event of subway approval acts as a catalyst for mayoral career advancement. Crucially, the effect is sustained only during the tenure of the mayors who secured the approval, as subsequent mayors do not benefit from this legacy. This temporal specificity is visually captured in the figure, where point estimates post-approval rise significantly above the baseline, with confidence intervals excluding the zero-effect threshold. Such findings underscore the individual achievement linked to the subway approval and its substantial, albeit time-bound, influence on promotion within the mayoral tenure, thereby substantiating the precision and validity of Lei and Zhou's analytical approach in their study.
+
+# Results
+Table 2, which outlines the core results of their multivariate regression analysis, confirms a statistically significant positive correlation between subway approvals and mayoral promotions across various model specifications.
+
+|                         |
+|:------------------------|
+| ![](figures/AnalysisTable2.png) |
+
+: Replication of @lei2022private Difference in Difference design {#tbl-main}
+
+The baseline model (Column 1) controls for city and year fixed effects and indicates that subway approval is associated with a 25.1% increase in the likelihood of mayoral promotion. This relationship persists even after progressively adding layers of complexity to the model: mayoral characteristics such as age, gender, ethnicity, education, and political connections (Column 2); city-level economic indicators like population, GDP size, and growth rate (Column 3); and province-year fixed effects to account for broader regional and temporal trends (Column 4).
+
+Each model reinforces the robust positive effect of subway approval on mayoral promotion, despite the introduction of additional controls. The analysis, conducted with rigorous statistical methods, employs standard errors clustered at the city level to correct for within-group correlation, enhancing the credibility of the findings. With an average promotion rate of 42.6% to 43.2% across the models, and a sample size ranging from 3,071 to 3,647 observations, Lei and Zhou provide compelling evidence that securing subway approval significantly boosts a mayor's promotion prospects, independent of a comprehensive array of personal and city-level factors. This nuanced approach to modeling and the consistent significance across various specifications underscore the conclusion that subway approvals play a substantial role in shaping the career trajectories of city mayors in China.
+
+
+# PPP investments on mayoral promotion
+
+I expand upon Lei & Zhou's study by using both fixed effect model and difference-in-differences model to test the effects of Public-Private Partnership (PPP) investments on the promotion odds of municipal leaders within a three-year tenure. The PPP data matches PPP contracts with Chinese mayors who served from 2010 to 2017.[@li2023public]
+
+|                         |
+|:------------------------|
+| ![](figures/PPPTable3.png) |
+
+: PPP Projects and Mayoral Promotion {#tbl-main}
+
+
+The new data examines the effect of Public-Private Partnership (PPP) investments on mayoral promotion within three years, disaggregated by type of investment, to test the hypothesis posited by Lei and Zhou that economic impact drives the promotion of mayors. The types of PPP investment analyzed are 'All PPP', 'Transportation PPP', and 'Environmental PPP', with each category assessed using both difference-in-differences (DiD) and fixed effects (FE) models.
+
+Table 3, which the results show that for 'All PPP' investments, 'Transportation PPP', and 'Environmental PPP', there is no statistically significant effect on the likelihood of mayoral promotion, as indicated by the coefficients that are effectively zero across all DiD models. These findings suggest that, contrary to Lei and Zhou's claim, not all types of investment yield a perceptible economic spillover that results in mayoral promotion, at least not within the three-year window examined. This could imply that provincial party officials may not perceive all PPP investments as equally valuable or that the economic benefits of such investments do not materialize quickly enough to influence mayoral promotions within the short timeframe considered.
+
+The FE models, which control for unobserved city-level heterogeneity, also report no significant effects for 'All PPP Project', 'Environmental and Water Conservancy PPP Project', with 'Transportation PPP Project' showing a small negative effect. This negative coefficient in the 'Transportation PPP Project' FE model could be due to various reasons, such as the long gestation period of transportation projects not aligning with the short-term assessment period for promotion, or that such investments are not valued as highly by provincial officials when evaluating mayoral performance.
+
+In sum, the PPP data do not support the notion that investment type consistently correlates with mayoral promotion, as posited by Lei and Zhou. These findings could indicate a more complex relationship between investment types, economic spillovers, and political rewards, or they could reflect that the time frame for evaluating the economic impacts of these investments is insufficient. Further research might explore longer-term effects, different kinds of economic benefits, or alternative incentives for provincial officials when assessing mayoral performance
+
+
+
+
+# Conclution
+
+This study extends the foundational research of Lei and Zhou by examining the relationship between Public-Private Partnership (PPP) investments and the promotion trajectories of municipal leaders in China within the typical three-year mayoral tenure. The analysis, employing both difference-in-differences and fixed effects models, explores various categories of PPP investments, namely 'All PPP', 'Transportation PPP', and 'Environmental PPP'. Contrary to Lei and Zhou's findings that linked economic achievements to promotions, this study reveals no significant effect of PPP investments on the likelihood of mayoral promotion across the board. The results, particularly for 'Transportation PPP' investments, indicate a minor negative influence, suggesting that these investments might not align with the short-term metrics used for assessing political advancement, or perhaps provincial officials value such investments differently.
+
+The absence of a significant positive correlation between PPP investments and mayoral promotions within the three-year window questions the assumed direct linkage between economic impact and political ascent posited in prior studies. This finding points to a more nuanced and potentially less straightforward relationship. The study's limitations, such as the constraints of the three-year observational window and the varying timelines required for PPP projects to yield tangible economic benefits, suggest that a longer-term perspective may be necessary to fully understand the dynamics at play. Future research could profitably investigate the long-term economic effects of PPP investments and consider alternative evaluation metrics used by provincial officials. The implications of this study are significant, as they invite policymakers and scholars to reconsider the incentives that drive the commitment of local officials to public infrastructure projects and to explore new avenues for aligning long-term public benefits with political career incentives.
+
+
+::: {#refs}
+:::
+
